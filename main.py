@@ -2,14 +2,16 @@ import requests
 import json
 
 def main():
-    url = "http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&APPID=71dc8342d714cc6d6a2e54b2eb8765a8"
+
+    url = "http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&APPID={}"
+    key = "71dc8342d714cc6d6a2e54b2eb8765a8" #add your key here
     city = input("Enter city: ")
-    r = requests.get(url.format(city))
+    r = requests.get(url.format(city, key))
     jsonfile = json.loads(r.text)
     while jsonfile["cod"] == "404": 
         print("City not found")
         city = input("Enter city: ")
-        r = requests.get(url.format(city))
+        r = requests.get(url.format(city, key))
         jsonfile = json.loads(r.text)
     print('''
     Location: {}
