@@ -2,6 +2,20 @@
 <html>
     <head>
         <title>My Weather App</title>
+        <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+        <script>
+            x = navigator.geolocation;
+            x.getCurrentPosition(sendPosition);
+            function sendPosition(position){
+                var myLat = position.coords.latitude;
+                var myLong = position.coords.longitude;
+                $.ajax({
+                    type : "POST",
+                    url : "/", 
+                    data : {latitude: myLat, longitude: myLong}
+                });
+            }
+        </script>
     </head>
     <body>
         <h1>Your Location: {{ location }}</h1>
