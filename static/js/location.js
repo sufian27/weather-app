@@ -1,4 +1,3 @@
-    console.log("Script run")
     x = navigator.geolocation;
     x.getCurrentPosition(sendPosition);
     function sendPosition(position){

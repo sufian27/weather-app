@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request
-from weather import get_weather
+from flask_cors import CORS
+from weather import get_weather\
+
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/")
 def index():     
